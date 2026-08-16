@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jyotish Saathi — Free Astrology</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">✦ Jyotish Saathi</div>
+    <button id="hostBtn" class="ghost-btn">Host Login</button>
+  </header>
+
+  <main>
+    <section id="welcome" class="screen active">
+      <div class="hero-card">
+        <div class="orb">☾</div>
+        <p class="eyebrow">FREE ASTROLOGY GUIDANCE</p>
+        <h1>Ask your question.<br><span>Discover your path.</span></h1>
+        <p class="sub">Enter your name, mobile number and date of birth to receive astrology-style guidance and keep your question history.</p>
+        <button id="startBtn" class="primary-btn">Start Consultation →</button>
+        <p class="note">For guidance and entertainment only — not a substitute for professional advice.</p>
+      </div>
+    </section>
+
+    <section id="login" class="screen">
+      <div class="panel">
+        <div class="panel-icon">✦</div>
+        <h2>Welcome</h2>
+        <p class="muted">Only your name and mobile number are needed.</p>
+        <form id="userForm">
+          <label>Full Name
+            <input id="name" required maxlength="80" placeholder="Enter your name">
+          </label>
+          <label>Mobile Number
+            <input id="mobile" required inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit mobile number">
+          </label>
+          <button class="primary-btn" type="submit">Continue →</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="question" class="screen">
+      <div class="panel wide">
+        <div class="user-strip"><span id="userGreeting"></span><button id="logoutBtn" class="link-btn">Change user</button></div>
+        <h2>Tell us about yourself</h2>
+        <div class="grid">
+          <label>Date of Birth
+            <input id="dob" type="date" required>
+          </label>
+          <label>Birth Time <span class="optional">(optional)</span>
+            <input id="birthTime" type="time">
+          </label>
+        </div>
+        <label>Your Question
+          <textarea id="questionText" rows="5" maxlength="1000" placeholder="Example: Will I get a better job this year?"></textarea>
+        </label>
+        <div class="chips">
+          <button type="button" data-q="Career and job prospects">Career</button>
+          <button type="button" data-q="Love and relationship">Love</button>
+          <button type="button" data-q="Money and finance">Money</button>
+          <button type="button" data-q="Education and studies">Education</button>
+          <button type="button" data-q="Marriage">Marriage</button>
+        </div>
+        <button id="askBtn" class="primary-btn">Get Astrology Guidance ✦</button>
+        <div id="answerBox" class="answer hidden"></div>
+      </div>
+    </section>
+
+    <section id="history" class="screen">
+      <div class="panel wide">
+        <div class="user-strip"><span id="historyUser"></span><button id="newQuestionBtn" class="link-btn">New question</button></div>
+        <h2>Your Question History</h2>
+        <div id="historyList"></div>
+      </div>
+    </section>
+
+    <section id="host" class="screen">
+      <div class="panel wide">
+        <div class="user-strip"><span>Host Dashboard</span><button id="hostLogoutBtn" class="link-btn">Logout</button></div>
+        <div id="hostLoginBox">
+          <h2>Host Login</h2>
+          <p class="muted">View consultation records saved by this browser, or connect Firebase for shared cloud history.</p>
+          <form id="hostForm">
+            <label>Host ID<input id="hostId" required inputmode="numeric"></label>
+            <label>Password<input id="hostPassword" required type="password"></label>
+            <button class="primary-btn" type="submit">Login</button>
+          </form>
+          <p id="hostError" class="error"></p>
+        </div>
+        <div id="hostDashboard" class="hidden">
+          <div class="stats"><div><b id="totalUsers">0</b><span>Records</span></div><div><b id="todayCount">0</b><span>Today</span></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Date</th><th>Name</th><th>Mobile</th><th>DOB</th><th>Question</th><th>Answer</th></tr></thead><tbody id="hostRows"></tbody></table></div>
+          <button id="clearHistoryBtn" class="danger-btn">Clear Local Records</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
